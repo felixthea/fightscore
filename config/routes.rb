@@ -1,5 +1,7 @@
 Fightscore::Application.routes.draw do
-  resources :fight do
-    resources :round
+  root :to => "fights#index"
+  
+  resources :fights do
+    resources :rounds
   end
 end
