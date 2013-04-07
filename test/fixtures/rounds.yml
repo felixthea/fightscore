@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fighter_a_score: 1
+  fighter_b_score: 1
+
+two:
+  fighter_a_score: 1
+  fighter_b_score: 1
