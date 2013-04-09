@@ -13,11 +13,11 @@ fights#show
 	</tr>
 	<tr>
 		<td><%= @fight.fighter_a %></td>
-		<td>Round one fighter a score field here</td>
+		<td><%= @fight.rounds.find_by_id(1).fighter_a_score %></td>
 	</tr>
 	<tr>
 		<td><%= @fight.fighter_b %></td>
-		<td>Round one fighter b score field here</td>
+		<td><%= @fight.rounds.find_by_id(1).fighter_b_score %></td>
 	</tr>
 </table>
 
