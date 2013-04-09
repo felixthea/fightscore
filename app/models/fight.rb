@@ -1,4 +1,4 @@
 class Fight < ActiveRecord::Base
-  attr_accessible :date, :fighter_a, :fighter_b
-  has_many :rounds
+  attr_accessible :date
+  has_many :rounds, :through => :fighters
 end

@@ -1,4 +1,4 @@
 class Round < ActiveRecord::Base
-  attr_accessible :fighter_a_score, :fighter_b_score
-  belongs_to :fight
+  attr_accessible :roundname
+  has_many :fights, :through => :fighters
 end
