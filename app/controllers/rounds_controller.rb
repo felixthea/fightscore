@@ -2,6 +2,7 @@ class RoundsController < ApplicationController
   # GET /rounds
   # GET /rounds.json
   def index
+    @fight = Fight.find(params[:fight_id])
     @rounds = Round.all
 
     respond_to do |format|
