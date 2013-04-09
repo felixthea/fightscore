@@ -1,6 +1,14 @@
 class FightsController < ApplicationController
   # GET /fights
   # GET /fights.json
+  
+  before_filter :get_fight
+  # before_filter :get_fighters
+  
+  def get_fight
+    @fight = Fight.find(params[:id])
+  end
+  
   def index
     @fights = Fight.all
 
@@ -13,7 +21,6 @@ class FightsController < ApplicationController
   # GET /fights/1
   # GET /fights/1.json
   def show
-    @fight = Fight.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
