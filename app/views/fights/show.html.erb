@@ -1,7 +1,25 @@
 <p id="notice"><%= notice %></p>
-
+fights#show
+<br />
+<br />
 <%= @fight.fighter_a %> vs. <%= @fight.fighter_b %> on <%= @fight.date %>
 <br />
 <br />
+
+<table>
+	<tr>
+		<td>Fighters</td>
+		<td>Round 1</td>
+	</tr>
+	<tr>
+		<td><%= @fight.fighter_a %></td>
+		<td>Round one fighter a score field here</td>
+	</tr>
+	<tr>
+		<td><%= @fight.fighter_b %></td>
+		<td>Round one fighter b score field here</td>
+	</tr>
+</table>
+
 <%= link_to 'Edit', edit_fight_path(@fight) %> |
 <%= link_to 'Back', fights_path %>
