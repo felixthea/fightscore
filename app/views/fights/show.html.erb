@@ -17,9 +17,9 @@ fights#show
 	</tr>
 	<tr>
 		<td><%= @fight.fighter_b %></td>
-		<td><%= @fight.rounds.find_by_id(1).fighter_b_score %></td>
+		<td><%= @fight.rounds.find_by_id(1).fighter_a_score %></td>
 	</tr>
-</table>
+</table><%=
 
 <%= link_to 'Edit', edit_fight_path(@fight) %> |
 <%= link_to 'Back', fights_path %>
