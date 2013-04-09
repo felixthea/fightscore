@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= @fight.fighter_a %> vs. <%= @fight.fighter_b %> on <%= @fight.date %>
+<br />
+<br />
 <%= link_to 'Edit', edit_fight_path(@fight) %> |
 <%= link_to 'Back', fights_path %>
