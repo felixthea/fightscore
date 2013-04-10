@@ -2,7 +2,7 @@ class FightsController < ApplicationController
   # GET /fights
   # GET /fights.json
   
-  before_filter :get_fight
+  # before_filter :get_fight
   # before_filter :get_fighters
   
   def get_fight
@@ -21,7 +21,9 @@ class FightsController < ApplicationController
   # GET /fights/1
   # GET /fights/1.json
   def show
-
+    @fight = Fight.find(params[:id])
+    @rounds = Round.find_all_by_fight_id(params[:id])
+          
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @fight }

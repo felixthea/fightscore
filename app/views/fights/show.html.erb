@@ -1,25 +1,14 @@
 <p id="notice"><%= notice %></p>
 fights#show
-<br />
-<br />
-<%= @fight.fighter_a %> vs. <%= @fight.fighter_b %> on <%= @fight.date %>
-<br />
-<br />
-
-<table>
+<br/>
+<br/>
+This fight is on <%= @fight.date %>
+<% @rounds.each do |round| %>
 	<tr>
-		<td>Fighters</td>
-		<td>Round 1</td>
+		<td><%= round.roundname %></td>
 	</tr>
-	<tr>
-		<td><%= @fight.fighter_a %></td>
-		<td><%= @fight.rounds.find_by_id(1).fighter_a_score %></td>
-	</tr>
-	<tr>
-		<td><%= @fight.fighter_b %></td>
-		<td><%= @fight.rounds.find_by_id(1).fighter_a_score %></td>
-	</tr>
-</table><%=
+	
+<% end %>
 
 <%= link_to 'Edit', edit_fight_path(@fight) %> |
 <%= link_to 'Back', fights_path %>
