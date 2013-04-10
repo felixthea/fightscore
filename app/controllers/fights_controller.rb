@@ -21,8 +21,8 @@ class FightsController < ApplicationController
   # GET /fights/1
   # GET /fights/1.json
   def show
-    @fight = Fight.find(params[:id])
-    @rounds = Round.find_all_by_fight_id(params[:id])
+    @fight = Fight.includes(:fighters).find(params[:id]) #pulls up the individual fight
+    @rounds = Round.find_all_by_fight_id(params[:id]) #pulls all of the rounds for this fight
           
     respond_to do |format|
       format.html # show.html.erb
