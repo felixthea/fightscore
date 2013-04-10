@@ -9,7 +9,9 @@
 
 <% @fights.each do |fight| %>
   <tr>
-	<td><%= fight.fighter_a %> vs. <%= fight.fighter_b %> on <%= fight.date %>
+	<td>Fight Date: <%= fight.date %></td>
+	<td>Fighter A:</td>
+	<td>Fighter B:</td>
 	<td><%= link_to 'Show', fight %></td>
     <td><%= link_to 'Edit', edit_fight_path(fight) %></td>
     <td><%= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
