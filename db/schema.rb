@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410012123) do
+ActiveRecord::Schema.define(:version => 20130414192043) do
 
   create_table "fighters", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130410012123) do
     t.integer  "fight_id"
     t.integer  "roundname"
     t.integer  "fighter_id"
+    t.integer  "score"
   end
 
 end
