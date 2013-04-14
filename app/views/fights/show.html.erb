@@ -10,6 +10,10 @@ This fight is on <%= @fight.date %>
 	<ul>
 		<% fighter.rounds.each do |round| %>
 			<li>Round <%= round.roundname %> Score: <%= round.score %></li>
+			<%= form_for(round) do |f| %>
+				<%= f.number_field :score %>
+				<%= f.submit %>
+			<% end %>
 		<% end %>
 	</ul>
 <% end %>

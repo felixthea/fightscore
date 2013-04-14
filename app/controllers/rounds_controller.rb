@@ -58,10 +58,11 @@ class RoundsController < ApplicationController
   # PUT /rounds/1.json
   def update
     @round = Round.find(params[:id])
+    @fight = Fight.find(@round.fight_id)
 
     respond_to do |format|
       if @round.update_attributes(params[:round])
-        format.html { redirect_to @round, notice: 'Round was successfully updated.' }
+        format.html { redirect_to @fight, notice: 'Round was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
