@@ -3,17 +3,18 @@ fights#show
 <br/>
 <br/>
 This fight is on <%= @fight.date %>
-<% @rounds.each do |round| %>
-	<tr>
-		<td><%= round.roundname %></td>
-	</tr>
-<% end %>
 
 <ul>
 <% @fight.fighters.each do |fighter| %>
 	<li><%= fighter.name %></li>
+	<%= fighter.rounds.each do |round| %>
+		<li><%= round.roundname %></li>
+	<% end %>
 <% end %>
 </ul>
+
+
+
 
 <%= link_to 'Edit', edit_fight_path(@fight) %> |
 <%= link_to 'Back', fights_path %>
