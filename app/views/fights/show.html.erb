@@ -9,7 +9,7 @@ This fight is on <%= @fight.date %>
 	<li><%= fighter.name %></li>
 	<ul>
 		<% fighter.rounds.each do |round| %>
-			<li>Round <%= round.roundname %></li>
+			<li>Round <%= round.roundname %> Score: <%= round.score %></li>
 		<% end %>
 	</ul>
 <% end %>
