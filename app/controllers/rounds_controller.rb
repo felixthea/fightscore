@@ -1,6 +1,9 @@
 class RoundsController < ApplicationController
   # GET /rounds
   # GET /rounds.json
+  
+  before_filter :authenticate_user!, :except => [:show, :index]
+  
   def index
     @fight = Fight.find(params[:fight_id])
     @rounds = Round.all
