@@ -9,12 +9,12 @@ This fight is on <%= @fight.date %>
 	<li><%= fighter.name %></li>
 	<ul>
 		<% fighter.rounds.each do |round| %>
-			<li>Round <%= round.roundname %> Score: <%= round.score %></li>
-			<%= form_for(round) do |f| %>
+			<li>Round <%= round.roundname %> Score: <%= round.score.score %></li>
+			<%= form_for(round.score) do |f| %>
 				<%= f.number_field :score %>
 				<%= f.submit %>
 			<% end %>
-		<% end %>
+		<% end %>	
 	</ul>
 <% end %>
 </ul>

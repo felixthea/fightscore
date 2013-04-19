@@ -14,7 +14,9 @@ class FightsController < ApplicationController
   # GET /fights/1.json
   def show
     @fight = Fight.includes(:fighters).find(params[:id]) #pulls up the individual fight
-          
+    #@rounds = Round.find_all_by_fight_id(params[:id])
+    @score = Score.find_by_round_id(:round_id)
+              
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @fight }

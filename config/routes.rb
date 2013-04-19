@@ -6,5 +6,6 @@ Fightscore::Application.routes.draw do
   resources :fights
   resources :fighters
   resources :rounds
+  resources :scores
   
 end
