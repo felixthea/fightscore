@@ -57,11 +57,12 @@ class ScoresController < ApplicationController
   # PUT /scores/1.json
   def update
     @score = Score.find(params[:id])
-    #@fight = Fight.find(score.fight_id)
+    @round = Round.find(@score.round_id)
+    @fight = Fight.find(@round.fight_id)
 
     respond_to do |format|
       if @score.update_attributes(params[:score])
-        format.html { redirect_to @score, notice: 'Score was successfully updated.' }
+        format.html { redirect_to @fight, notice: 'Score was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
