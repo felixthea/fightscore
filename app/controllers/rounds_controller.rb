@@ -17,7 +17,10 @@ class RoundsController < ApplicationController
   # GET /rounds/1
   # GET /rounds/1.json
   def show
+    @user = current_user
     @round = Round.find(params[:id])
+    @fighter = Fighter.find(@round.fighter_id)
+    @score = Score.find_by_user_id(@user.id)
 
     respond_to do |format|
       format.html # show.html.erb
