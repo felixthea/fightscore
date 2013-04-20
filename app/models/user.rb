@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   has_many :scores
-  has_many :rounds, :through => :scores
+  # has_many :rounds, :through => :scores
 end
