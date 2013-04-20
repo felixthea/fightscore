@@ -1,24 +1,17 @@
-<h1>Listing fights</h1>
+<h1>Fights</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @fights.each do |fight| %>
-  <tr>
-	<td>Fight Date: <%= fight.date %></td>
-	<td>Fighter A:</td>
-	<td>Fighter B:</td>
-	<td><%= link_to 'Show', fight %></td>
-    <td><%= link_to 'Edit', edit_fight_path(fight) %></td>
-    <td><%= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<ul>
+	<% @fights.each do |fight| %>
+		<li>
+			<% fight.fighters.uniq.each do |fighter| %>
+				<%= fighter.name %> vs.
+			<% end %>
+			on <%= fight.date %>
+			<%= link_to 'Show', fight %>
+		    <%= link_to 'Edit', edit_fight_path(fight) %>
+		    <%= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</li>
+	<% end %>
+</ul>
 
 <%= link_to 'New Fight', new_fight_path %>

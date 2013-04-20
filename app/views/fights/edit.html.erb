@@ -1,6 +1,22 @@
 <h1>Editing fight</h1>
 
-<%= render 'form' %>
+<strong>Fighters</strong>
+<br/>
+<ul>
+	<% @fight.fighters.uniq.each do |fighter| %>
+		<li><%= fighter.name %></li>
+	<% end %>
+</ul>
+
+<strong>Rounds</strong>
+<br/>
+<ul>
+	<% @fight.rounds.each do |round| %>
+		<li><%= round.roundname %></li>
+	<% end %>
+</ul>
+
+
 
 <%= link_to 'Show', @fight %> |
 <%= link_to 'Back', fights_path %>

@@ -1,4 +1,17 @@
 <p id="notice"><%= notice %></p>
-
+<%= @fighter.name %>
+<%= @round.fight.date %>
+<br/>
+Fighters:
+<% @round.fight.fighters.uniq.each do |fighter| %>
+	<%= fighter.name %>
+<% end %>
+<br/>
+Score: <%= @score.score %>
+<br/>
+<%= form_for @score do |f| %>
+	<%= f.number_field :score %>
+	<%= f.submit %>
+<% end %>
 
 <%= link_to 'Edit', edit_round_path(@round) %> 
