@@ -2,22 +2,24 @@
 fights#show
 <br/>
 <br/>
-This fight is on <%= @fight.date %>
+This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %>
+
+<% fighters = find_fights_fighters(@fight.id) %>
 
 <ul>
-<% @fight.fighters.each do |fighter| %>
-	<li><%= fighter.name %></li>
-	<ul>
-		<% fighter.rounds.each do |round| %>
-			<li>Round <%= round.roundname %> Score: <%= round.score.score %></li>
-			<%= form_for(round.score) do |f| %>
-				<%= f.number_field :score %>
-				<%= f.submit %>
+	<% fighters.uniq.each do |fighter| %>
+		<li><%= fighter.name %></li>
+		<ul>
+			<% rounds = find_rounds_for_fights_fighter(@fight.id, fighter.id) %>
+			<% rounds.each do |round| %>
+				<% @score = find_users_score_for_round(round.id, @user.id) %>
+				<li>Round: <%= round.roundname %> | Score: <%= @score.score %></li>
+				<%= render 'score_form' %>
 			<% end %>
-		<% end %>	
-	</ul>
-<% end %>
+		</ul>
+	<% end %>
 </ul>
+
 
 <%= link_to 'Edit', edit_fight_path(@fight) %> |
 <%= link_to 'Back', fights_path %>

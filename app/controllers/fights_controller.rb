@@ -1,6 +1,12 @@
 class FightsController < ApplicationController
   # GET /fights
   # GET /fights.json
+  before_filter :find_current_user
+  
+  def find_current_user
+    @user = current_user
+  end
+  
   def index
     @fights = Fight.all
 
@@ -13,10 +19,8 @@ class FightsController < ApplicationController
   # GET /fights/1
   # GET /fights/1.json
   def show
-    @fight = Fight.includes(:fighters).find(params[:id]) #pulls up the individual fight
-    #@rounds = Round.find_all_by_fight_id(params[:id])
-    @score = Score.find_by_round_id(:round_id)
-              
+    @fight = Fight.find(params[:id])
+                  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @fight }
@@ -27,6 +31,7 @@ class FightsController < ApplicationController
   # GET /fights/new.json
   def new
     @fight = Fight.new
+    @fighters = Fighter.all
 
     respond_to do |format|
       format.html # new.html.erb
