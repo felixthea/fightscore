@@ -62,7 +62,7 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if @score.update_attributes(params[:score])
-        format.html { redirect_to @fight, notice: 'Score was successfully updated.' }
+        format.html { redirect_to @round, notice: 'Score was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
