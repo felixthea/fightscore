@@ -15,4 +15,9 @@ module FightsHelper
     return fighters
   end
   
+  def find_all_fighters
+    fighters = Fighter.all
+    return fighters
+  end
+  
 end
