@@ -5,7 +5,8 @@ class RoundsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   
   def index
-    @fight = Fight.find(params[:fight_id])
+    #@fight = Fight.find(params[:fight_id])
+    @fights = Fight.all
     @rounds = Round.all
 
     respond_to do |format|

@@ -1,20 +1,33 @@
 <h1>Listing rounds</h1>
 
+<ul>
+<% @fights.each do |fight| %>
+	<li><%= fight.date %> (ID: <%= fight.id %>)</li>
+	<ul>
+		<% fighters = find_fights_fighters(fight.id) %>
+		<% fighters.uniq.each do |fighter| %>
+			<li><%= fighter.name %> (ID: <%= fighter.id %>)</li>
+			<ul>
+				<% rounds = find_rounds_for_fights_fighter(fight.id, fighter.id) %>
+				<% rounds.each do |round| %>
+					<li>Round #<%= round.roundname %> (ID: <%= round.id %>)</li>
+				<% end %>
+			</ul>
+		<% end %>
+	</ul>
+<% end %>
+</ul>
+  
 <table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @rounds.each do |round| %>
   <tr>
-    <td><%= link_to 'Show', fight_round_path(@fight, round) %></td>
-    <td><%= link_to 'Edit', edit_fight_round_path(@fight, round) %></td>
-    <td><%= link_to 'Destroy', fight_round_path(@fight, round), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td><%= round.roundname %></td>
+	<td><%= link_to 'Show', round_path(round) %></td>
+    <td><%= link_to 'Edit', edit_round_path(round) %></td>
+    <td><%= link_to 'Destroy', round_path(round), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<%= link_to 'Create Rounds', new_round_path %>
 
