@@ -93,10 +93,25 @@ class FightsController < ApplicationController
     @rounds = Round.find_all_by_fight_id(@fight.id)
     
     # @rounds.count.times do
-      @rounds.each do |round|
-        Score.create(round_id: round.id, user_id: @user.id)
-      end
+    @rounds.each do |round|
+      Score.create(round_id: round.id, user_id: @user.id)
+    end
     # end
+    redirect_to @fight
+  end
+  
+  def create_rounds
+    @fight = Fight.find(params[:id])
+    #we know thecurrent user because of the before_filter
+    @fighters = @fight.fighters
+    
+    @fighters.uniq.each do |fighter|
+      i = 1
+      while i < @fight.numrounds+1 do
+        Round.create(fight_id: @fight.id, fighter_id: fighter.id, roundname: i)
+        i +=1
+      end
+    end
     redirect_to @fight
   end
 end

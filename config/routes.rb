@@ -6,6 +6,7 @@ Fightscore::Application.routes.draw do
   resources :fights do
     member do
       get 'score'
+      get 'create_rounds'
     end
   end
   resources :fighters
