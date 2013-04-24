@@ -20,4 +20,8 @@ module FightsHelper
     return fighters
   end
   
+  def find_all_rounds_for_fight(fight_id)
+    rounds = Round.find_all_by_fight_id(fight_id)
+    return rounds
+  end
 end

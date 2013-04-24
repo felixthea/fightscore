@@ -25,17 +25,25 @@ This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %
 	<% fighters.uniq.each do |fighter| %>
 	<tr>
 		<td><%= fighter.name %></td>
-			<% rounds = find_rounds_for_fights_fighter(@fight.id, fighter.id) %>
-			<% rounds.each do |round| %>
+			<% fighters_rounds = find_rounds_for_fights_fighter(@fight.id, fighter.id) %>
+			<% fighters_rounds.each do |round| %>
 				<% @score = find_users_score_for_round(round.id, @user.id) %>
-				<% if Score.exists?(@score) %>
-					<td><%#= @score.score %><%= render 'score_form' %></td>
-				<% end %>
+				<td>
+					<%= round.id %>
+					<% if Score.exists?(@score) %>
+						<%= render 'score_form' %>
+					<% end %>
+				</td>
 			<% end %>
 	</tr>
 	<% end %>
 </table>
 
+<%= link_to 'Score this Fight', score_fight_path(@fight) %>
+
+<%# find_all_rounds_for_fight(@fight.id) %>
+
+<%#= link_to 'Score Fight', %>
 
 <%= link_to 'Edit', edit_fight_path(@fight) %> |
 <%= link_to 'Back', fights_path %>

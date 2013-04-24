@@ -87,4 +87,16 @@ class FightsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def score
+    @fight = Fight.find(params[:id])
+    @rounds = Round.find_all_by_fight_id(@fight.id)
+    
+    # @rounds.count.times do
+      @rounds.each do |round|
+        Score.create(round_id: round.id, user_id: @user.id)
+      end
+    # end
+    redirect_to @fight
+  end
 end

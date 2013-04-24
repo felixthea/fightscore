@@ -3,9 +3,15 @@ Fightscore::Application.routes.draw do
 
   root :to => "fights#index"
   
-  resources :fights
+  resources :fights do
+    member do
+      get 'score'
+    end
+  end
   resources :fighters
   resources :rounds
   resources :scores
+  
+  #match '/fight/:id/score', :controller => 'scores', :action => 'create_scores'
   
 end
