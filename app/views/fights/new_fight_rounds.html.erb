@@ -1,0 +1,11 @@
+<br/>
+This is for fight # <%= @fight.id %>
+<br/>
+These are the fighter IDs:
+<br/>
+<% @fight.fighters.uniq.each do |fighter| %>
+	<%= fighter.id %><br/>
+<% end %>
+<br/>
+This is the # of rounds for this fight:
+<br/>
