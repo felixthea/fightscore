@@ -14,6 +14,7 @@ This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %
 		<td>Round 3</td>
 		<td>Round 4</td>
 		<td>Round 5</td>
+		<% if @fight.numrounds == 12 %>
 		<td>Round 6</td>
 		<td>Round 7</td>
 		<td>Round 8</td>
@@ -21,6 +22,7 @@ This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %
 		<td>Round 10</td>
 		<td>Round 11</td>
 		<td>Round 12</td>
+		<% end %>
 	</tr>
 	<% fighters.uniq.each do |fighter| %>
 	<tr>
