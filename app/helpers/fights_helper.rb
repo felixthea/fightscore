@@ -24,4 +24,19 @@ module FightsHelper
     rounds = Round.find_all_by_fight_id(fight_id)
     return rounds
   end
+  
+  # def create_all_rounds(fight, fighters)
+#     fight = Fight.find(fight.id)
+#     fighters = fight.fighters
+#     numrounds = fight.numrounds
+#     
+#     fighters.uniq.each do |fighter|
+#       i = 1
+#       while i < numrounds+1 do
+#         Round.create(fight_id: fight.id, fighter_id: fighter.id, roundname: i)
+#         i +=1
+#       end
+#     end
+#     redirect_to @fight
+#   end
 end

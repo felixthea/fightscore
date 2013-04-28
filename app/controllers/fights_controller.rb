@@ -100,18 +100,22 @@ class FightsController < ApplicationController
     redirect_to @fight
   end
   
-  def create_rounds
-    @fight = Fight.find(params[:id])
-    #we know thecurrent user because of the before_filter
-    @fighters = @fight.fighters
+  def new_fight_rounds
+    @fight = Fight.find(params[:id]) #we can figure out the fight_id this way and we can do @fight.fighters to find the fighter IDs
+    @round = Round.new
+  end
+  
+  def create_all_rounds
+    fight = Fight.find(params[:id])
+    fighters = fight.fighters
     
-    @fighters.uniq.each do |fighter|
-      i = 1
-      while i < @fight.numrounds+1 do
-        Round.create(fight_id: @fight.id, fighter_id: fighter.id, roundname: i)
-        i +=1
+    fighters.uniq.each do |fighter|
+      i = 2
+      while i < fight.numrounds+1 do
+        Round.create(fight_id: fight.id, fighter_id: fighter.id, roundname: i)
+        i += 1
       end
     end
-    redirect_to @fight
+    redirect_to fight
   end
 end
