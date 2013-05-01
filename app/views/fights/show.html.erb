@@ -41,7 +41,7 @@ This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %
 	<% end %>
 </table>
 
-<%= link_to 'Score this Fight', score_fight_path(@fight) %>
+<%= link_to 'Reset Scores', destroy_all_scores_fight_path(@fight), data: { confirm: 'Are you sure?' } %>
 
 <%# find_all_rounds_for_fight(@fight.id) %>
 

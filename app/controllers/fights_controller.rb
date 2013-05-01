@@ -121,4 +121,15 @@ class FightsController < ApplicationController
     end
     redirect_to fight, notice: 'Already has appropriate # of rounds created'
   end
+  
+  def destroy_all_scores
+    @fight = Fight.find(params[:id])
+    @rounds = Round.find_all_by_fight_id(@fight.id)
+    
+    @rounds.each do |round|
+      Score.find_by_round_id_and_user_id(round.id, @user.id).destroy
+    end
+    
+    score
+  end
 end
