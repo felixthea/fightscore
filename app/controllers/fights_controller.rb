@@ -110,12 +110,15 @@ class FightsController < ApplicationController
     fighters = fight.fighters
     
     fighters.uniq.each do |fighter|
-      i = 2
-      while i < fight.numrounds+1 do
-        Round.create(fight_id: fight.id, fighter_id: fighter.id, roundname: i)
-        i += 1
+      fighter_rounds = Round.find_all_by_fight_id_and_fighter_id(fight.id,fighter.id).count #checks to make sure that there are not rounds created yet
+      if fighter_rounds != fight.numrounds
+        i = 2
+        while i < fight.numrounds+1 do
+          Round.create(fight_id: fight.id, fighter_id: fighter.id, roundname: i)
+          i += 1
+        end
       end
     end
-    redirect_to fight
+    redirect_to fight, notice: 'Already has appropriate # of rounds created'
   end
 end

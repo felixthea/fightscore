@@ -21,6 +21,7 @@
 <table>
 <% @rounds.each do |round| %>
   <tr>
+	<td><%= round.id %></td>
 	<td><%= round.roundname %></td>
 	<td><%= link_to 'Show', round_path(round) %></td>
     <td><%= link_to 'Edit', edit_round_path(round) %></td>
