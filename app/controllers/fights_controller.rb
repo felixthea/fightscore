@@ -20,6 +20,12 @@ class FightsController < ApplicationController
   # GET /fights/1.json
   def show
     @fight = Fight.find(params[:id])
+    # @rounds = Round.find_all_by_fight_id(@fight.id)
+#     i = 0
+#     @rounds.each do |round|
+#       Score.find_by_round_id(round.id)
+#     end
+      
                   
     respond_to do |format|
       format.html # show.html.erb
@@ -91,12 +97,13 @@ class FightsController < ApplicationController
   def score
     @fight = Fight.find(params[:id])
     @rounds = Round.find_all_by_fight_id(@fight.id)
-    
-    # @rounds.count.times do
-    @rounds.each do |round|
-      Score.create(round_id: round.id, user_id: @user.id)
-    end
-    # end
+  
+      @rounds.each do |round|
+        if Score.exists?(:round_id => round.id, :user_id => @user.id) # checks to make sure that this record doesn't exist already so it does not overwrite existing scores
+        else
+          Score.create(round_id: round.id, user_id: @user.id)
+        end
+      end
     redirect_to @fight
   end
   
@@ -110,7 +117,8 @@ class FightsController < ApplicationController
     fighters = fight.fighters
     
     fighters.uniq.each do |fighter|
-      fighter_rounds = Round.find_all_by_fight_id_and_fighter_id(fight.id,fighter.id).count #checks to make sure that there are not rounds created yet
+      #checks to make sure that there are not rounds created yet
+      fighter_rounds = Round.find_all_by_fight_id_and_fighter_id(fight.id,fighter.id).count 
       if fighter_rounds != fight.numrounds
         i = 2
         while i < fight.numrounds+1 do
