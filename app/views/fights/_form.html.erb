@@ -12,7 +12,10 @@
   <% end %>
 
   <div class="actions">
-	<%= date_select :fight, :date %>
+	Date: <%= date_select :fight, :date %>
+	<br/>
+	Number of Rounds: <%= f.number_field :numrounds %>
+	<br/>
 	<%= f.submit %>
   </div>
 <% end %>

@@ -31,7 +31,7 @@ This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %
 			<% fighters_rounds.each do |round| %>
 				<% @score = find_users_score_for_round(round.id, @user.id) %>
 				<td>
-					<%= round.id %>
+					<%#= round.id %>
 					<% if Score.exists?(@score) %>
 						<%= render 'score_form' %>
 					<% end %>
