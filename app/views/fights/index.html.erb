@@ -8,7 +8,8 @@
 			<% end %>
 			on <%= fight.date %>
 			in a <%= fight.numrounds %> round fight.
-			<%= link_to 'Show', fight %>
+			<%= link_to 'Score this Fight', score_fight_path(fight) %>
+			<%= link_to 'Show scores', fight_path(fight) %>
 		    <%= link_to 'Edit', edit_fight_path(fight) %>
 		    <%= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<%#= link_to 'Create Rounds', create_rounds_fight_path(fight) %>
