@@ -65,5 +65,7 @@ Fightscore::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' } # Needs to be updated with the actual host name
+  config.action_mailer.default_url_options = { :host => 'http://morning-wildwood-1134.herokuapp.com/' } # Needs to be updated with the actual host name
+  
+  config.assets.initialize_on_precompile = false
 end
