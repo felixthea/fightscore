@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20130503020259) do
   end
 
   create_table "rounds", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "fight_id"
     t.integer  "roundname"
     t.integer  "fighter_id"
