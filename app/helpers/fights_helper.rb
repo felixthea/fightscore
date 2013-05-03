@@ -25,13 +25,13 @@ module FightsHelper
     return rounds
   end
   
-  def calculate_total_score(fight_id, fighter_id)
+  def calculate_total_score(fight_id, fighter_id, user_id)
     @fight = Fight.find(fight_id)
     @rounds = Round.find_all_by_fight_id_and_fighter_id(@fight.id, fighter_id)
     fighter_score = 0
     
     @rounds.each do |round|
-      fighter_score = fighter_score + Score.find_by_round_id(round.id).score
+      fighter_score = fighter_score + Score.find_by_round_id_and_user_id(round.id, user_id).score
     end
     
     fighter_score
