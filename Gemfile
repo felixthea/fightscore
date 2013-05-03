@@ -23,11 +23,14 @@ group :assets do
   # gem 'less'
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'less-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'hirb'
-gem 'pg'
 gem 'google-analytics-rails'
 
 # To use ActiveModel has_secure_password
