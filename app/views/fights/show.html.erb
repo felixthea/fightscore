@@ -1,8 +1,5 @@
 <p id="notice"><%= notice %></p>
-fights#show
 <br/>
-<br/>
-This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %>
 
 <% fighters = find_fights_fighters(@fight.id) %>
 
@@ -23,6 +20,7 @@ This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %
 		<td>Round 11</td>
 		<td>Round 12</td>
 		<% end %>
+		<td>Total</td>
 	</tr>
 	<% fighters.uniq.each do |fighter| %>
 	<tr>
@@ -37,10 +35,11 @@ This fight is on <%= @fight.date %> User is <%= @user.email %> ID <%= @user.id %
 					<% end %>
 				</td>
 			<% end %>
+			<td><%= calculate_total_score(@fight.id, fighter.id) %></td>
 	</tr>
 	<% end %>
 </table>
-
+<br/>
 <%= link_to 'Reset Scores', destroy_all_scores_fight_path(@fight), data: { confirm: 'Are you sure?' } %>
 
 <%# find_all_rounds_for_fight(@fight.id) %>
