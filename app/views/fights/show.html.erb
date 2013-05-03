@@ -37,4 +37,5 @@
 			<div class="span1"><%= calculate_total_score(@fight.id, fighter.id) %></div>
 	</div>
 	<% end %>
+	<%= link_to "Clear Scores", destroy_all_scores_fight_path(@fight), data: { confirm: 'Are you sure?' }%>
 </div>
