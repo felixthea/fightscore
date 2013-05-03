@@ -68,4 +68,6 @@ Fightscore::Application.configure do
   config.action_mailer.default_url_options = { :host => 'http://morning-wildwood-1134.herokuapp.com/' } # Needs to be updated with the actual host name
   
   config.assets.initialize_on_precompile = false
+  
+  GA.tracker = "UA-40631129-1"
 end
