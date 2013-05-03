@@ -3,48 +3,38 @@
 
 <% fighters = find_fights_fighters(@fight.id) %>
 
-<table border="1">
-	<tr>
-		<td>Rounds</td>
-		<td>Round 1</td>
-		<td>Round 2</td>
-		<td>Round 3</td>
-		<td>Round 4</td>
-		<td>Round 5</td>
+<div class="container">
+	<div class="row">
+		<div class="span1"><strong>Rounds</strong></div>
+		<div class="span1">1</div>
+		<div class="span1">2</div>
+		<div class="span1">3</div>
+		<div class="span1">4</div>
+		<div class="span1">5</div>
 		<% if @fight.numrounds == 12 %>
-		<td>Round 6</td>
-		<td>Round 7</td>
-		<td>Round 8</td>
-		<td>Round 9</td>
-		<td>Round 10</td>
-		<td>Round 11</td>
-		<td>Round 12</td>
+			<div class="span1">6</div>
+			<div class="span1">7</div>
+			<div class="span1">8</div>
+			<div class="span1">9</div>
+			<div class="span1">10</div>
+			<div class="span1">11</div>
+			<div class="span1">12</div>
 		<% end %>
-		<td>Total</td>
-	</tr>
+		<div class="span1">Total</div>`
+	</div>
 	<% fighters.uniq.each do |fighter| %>
-	<tr>
-		<td><%= fighter.name %></td>
+	<div class="row">
+		<div class="span1"><%= fighter.name %></div>
 			<% fighters_rounds = find_rounds_for_fights_fighter(@fight.id, fighter.id) %>
 			<% fighters_rounds.each do |round| %>
 				<% @score = find_users_score_for_round(round.id, @user.id) %>
-				<td>
-					<%#= round.id %>
+				<div class="span1">
 					<% if Score.exists?(@score) %>
 						<%= render 'score_form' %>
 					<% end %>
-				</td>
+				</div>
 			<% end %>
-			<td><%= calculate_total_score(@fight.id, fighter.id) %></td>
-	</tr>
+			<div class="span1"><%= calculate_total_score(@fight.id, fighter.id) %></div>
+	</div>
 	<% end %>
-</table>
-<br/>
-<%= link_to 'Reset Scores', destroy_all_scores_fight_path(@fight), data: { confirm: 'Are you sure?' } %>
-
-<%# find_all_rounds_for_fight(@fight.id) %>
-
-<%#= link_to 'Score Fight', %>
-
-<%= link_to 'Edit', edit_fight_path(@fight) %> |
-<%= link_to 'Back', fights_path %>
+</div>
