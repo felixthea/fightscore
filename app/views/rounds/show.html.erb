@@ -6,7 +6,7 @@ Fighters:
 <% @round.fight.fighters.uniq.each do |fighter| %>
 	<%= fighter.name %>
 <% end %>
-<br/>
+<!-- <br/>
 Score: <%= @score.score %>
 <br/>
 <%= form_for @score do |f| %>
@@ -14,4 +14,4 @@ Score: <%= @score.score %>
 	<%= f.submit %>
 <% end %>
 
-<%= link_to 'Edit', edit_round_path(@round) %> 
+<%= link_to 'Edit', edit_round_path(@round) %>  -->
