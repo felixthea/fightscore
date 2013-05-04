@@ -36,4 +36,19 @@ module FightsHelper
     
     fighter_score
   end
+  
+  def find_all_users_scores_for_round(round_id)
+    scores = Score.find_all_by_round_id(round_id)
+    return scores
+  end
+  
+  # def avg_score(scores)
+#     avg_score = (score / scores.count)
+#     return avg_score
+#   end
+  
+  # def calculate_all_users_score(fight_id, fighter_id)
+#     @fight = Fight.find(fight_id)
+#     @rounds = Round.find_all_by_fight_id_and_fighter_id(@fight.id, fighter_id)
+    
 end

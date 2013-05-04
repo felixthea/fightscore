@@ -1,9 +1,26 @@
 <p id="notice"><%= notice %></p>
 <% fighters = find_fights_fighters(@fight.id) %>
+<% i = 0 %>
+<div class="container">
+	<div class="row">
+		<div class="span20">
+			<h1>
+			<% fighters.uniq.each do |fighter| %>
+				<% i = i + 1 %>
+				<%= fighter.name %>
+				<% if i < 2 %> 
+				vs.
+				<% end %>
+			<% end %>
+			</h1>
+			</div>
+	</div>
+</div>
 <div class="container">
 	<strong>Instructions:</strong> Score for each round for each fighter.  Hit the "Score" button for each fighter's round to save the score before entering scores for other rounds.  The total score will update as you save your scores.
 </div>
 <div class="container">
+	<h4>Your Scorecard</h4>
 	<div class="row">
 		<div class="span1"><strong>Rounds</strong></div>
 		<div class="span1">1</div>
@@ -37,5 +54,45 @@
 			<div class="span1"><%= calculate_total_score(@fight.id, fighter.id, @user.id) %></div>
 	</div>
 	<% end %>
-	<%= link_to "Clear Scores", destroy_all_scores_fight_path(@fight), data: { confirm: 'Are you sure?' }%>
+</div>
+<%= link_to "Clear Your Scorecard", destroy_all_scores_fight_path(@fight), data: { confirm: 'Are you sure?' }%>
+<div class="container">
+	<h4>CallTheFight.com Average Scorecard</h4>
+	<div class="row">
+		<div class="span1"><strong>Rounds</strong></div>
+		<div class="span1">1</div>
+		<div class="span1">2</div>
+		<div class="span1">3</div>
+		<div class="span1">4</div>
+		<div class="span1">5</div>
+		<% if @fight.numrounds == 12 %>
+			<div class="span1">6</div>
+			<div class="span1">7</div>
+			<div class="span1">8</div>
+			<div class="span1">9</div>
+			<div class="span1">10</div>
+			<div class="span1">11</div>
+			<div class="span1">12</div>
+		<% end %>
+		<div class="span1">Total</div>
+	</div>
+	<% fighters.uniq.each do |fighter| %>
+	<div class="row">
+		<div class="span1"><%= fighter.name %></div>
+			<% fighters_rounds = find_rounds_for_fights_fighter(@fight.id, fighter.id) %>
+			<% fighters_rounds.each do |round| %>
+				<% scores = find_all_users_scores_for_round(round.id) %>
+				<% total_scores = 0 %>
+				<div class="span1">
+					<% scores.each do |score| %>
+						<%# iterates through and adds up all the scores users submitted for this fighter's round %>
+						<% total_scores = total_scores + score.score %>
+						<% score.score %>
+					<% end %>
+					<%= total_scores / scores.count %>
+				</div>
+			<% end %>
+			<div class="span1"><%= calculate_total_score(@fight.id, fighter.id, @user.id) %></div>
+	</div>
+	<% end %>
 </div>
