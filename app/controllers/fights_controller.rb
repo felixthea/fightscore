@@ -21,6 +21,7 @@ class FightsController < ApplicationController
   # GET /fights/1.json
   def show
     @fight = Fight.find(params[:id])
+    # @eligible_scores = 0
     # @rounds = Round.find_all_by_fight_id(@fight.id)
 #     i = 0
 #     @rounds.each do |round|
