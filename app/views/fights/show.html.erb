@@ -83,13 +83,21 @@
 			<% fighters_rounds.each do |round| %>
 				<% scores = find_all_users_scores_for_round(round.id) %>
 				<% total_scores = 0 %>
+				<% eligible_scores = 0 %>
 				<div class="span1">
 					<% scores.each do |score| %>
 						<%# iterates through and adds up all the scores users submitted for this fighter's round %>
-						<% total_scores = total_scores + score.score %>
-						<% score.score %>
+						<% if score.score != 0 %>
+							<% total_scores = total_scores + score.score %>
+							<%# score.score %>
+							<% eligible_scores = eligible_scores + 1 %>
+						<% end %>
 					<% end %>
-					<%= total_scores / scores.count %>
+					<% if eligible_scores > 0 %>
+						<%= total_scores / eligible_scores %>
+					<% else %>
+						N/A
+					<% end %>
 				</div>
 			<% end %>
 			<div class="span1"><%= calculate_total_score(@fight.id, fighter.id, @user.id) %></div>
