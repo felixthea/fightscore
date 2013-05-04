@@ -18,8 +18,7 @@
 		    <%#= link_to 'Edit', edit_fight_path(fight) %>
 		    <%#= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<%#= link_to 'Create Rounds', create_rounds_fight_path(fight) %>
-			<%#= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
-			<%#= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
+			<%= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
 		</li>
 	<% end %>
 </ul>
