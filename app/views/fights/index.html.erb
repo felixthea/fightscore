@@ -1,26 +1,35 @@
 <h1>Fights</h1>
-
-<ul>
+<div align="center">
+	CallTheFight.com is an easy way for you to score fights as you watch them.  
+	<br/>
+	During and after the fight, we show you the scores from all CallTheFight.com fight fans tallied up to determine the fight's winner.
+	<br/>
+	Join in on the fun and call the next big fight!
+</div>
+<div class="container">
 	<% @fights.each do |fight| %>
-		<li>
+		<div class="span2" align="center">
 			<% i = 0 %>
+			<%= fight.date %>
+			<br/>
 			<% fight.fighters.uniq.each do |fighter| %>
 				<% i += 1%>
 				<strong><%= fighter.name %></strong>
 				<% if i < 2 %> 
-				vs.
+				<br/>vs.</br>
 				<% end %>
 			<% end %>
-			on <%= fight.date %>
-			in a <%= fight.numrounds %> round fight.
+			<br/>
+			<%= fight.numrounds %> round fight.
+			<br/>
 			<%= link_to 'Score this Fight', score_fight_path(fight) %>
 			<%#= link_to 'Show scores', fight_path(fight) %>
 		    <%#= link_to 'Edit', edit_fight_path(fight) %>
 		    <%#= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<%#= link_to 'Create Rounds', create_rounds_fight_path(fight) %>
 			<%#= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
-		</li>
+		</div>
 	<% end %>
-</ul>
+</div>
 
 <%#= link_to 'New Fight', new_fight_path %>
