@@ -2,6 +2,7 @@ class FightsController < ApplicationController
   # GET /fights
   # GET /fights.json
   before_filter :find_current_user
+  before_filter :authenticate_user!, :except => :index
   
   def find_current_user
     @user = current_user

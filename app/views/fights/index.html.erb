@@ -3,18 +3,23 @@
 <ul>
 	<% @fights.each do |fight| %>
 		<li>
+			<% i = 0 %>
 			<% fight.fighters.uniq.each do |fighter| %>
-				<%= fighter.name %> vs.
+				<% i += 1%>
+				<strong><%= fighter.name %></strong>
+				<% if i < 2 %> 
+				vs.
+				<% end %>
 			<% end %>
 			on <%= fight.date %>
 			in a <%= fight.numrounds %> round fight.
 			<%= link_to 'Score this Fight', score_fight_path(fight) %>
-			<%= link_to 'Show scores', fight_path(fight) %>
-		    <%= link_to 'Edit', edit_fight_path(fight) %>
-		    <%= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%#= link_to 'Show scores', fight_path(fight) %>
+		    <%#= link_to 'Edit', edit_fight_path(fight) %>
+		    <%#= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<%#= link_to 'Create Rounds', create_rounds_fight_path(fight) %>
 			<%#= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
-			<%= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
+			<%#= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
 		</li>
 	<% end %>
 </ul>
