@@ -74,7 +74,6 @@
 			<div class="span1">11</div>
 			<div class="span1">12</div>
 		<% end %>
-		<div class="span1">Total</div>
 	</div>
 	<% fighters.uniq.each do |fighter| %>
 	<div class="row">
@@ -85,6 +84,7 @@
 				<% total_scores = 0 %>
 				<% eligible_scores = 0 %>
 				<div class="span1">
+					<% avg_total_scores = 0 %>
 					<% scores.each do |score| %>
 						<%# iterates through and adds up all the scores users submitted for this fighter's round %>
 						<% if score.score > 7 %>
@@ -94,13 +94,14 @@
 						<% end %>
 					<% end %>
 					<% if eligible_scores > 0 %>
-						<%= total_scores / eligible_scores %>
+						<%= average_score = total_scores / eligible_scores %>
+						<% avg_total_scores = avg_total_scores + average_score %>
 					<% else %>
 						--
 					<% end %>
 				</div>
 			<% end %>
-			<div class="span1"><%= calculate_total_score(@fight.id, fighter.id, @user.id) %></div>
+			<div class="span1"></div>
 	</div>
 	<% end %>
 </div>
