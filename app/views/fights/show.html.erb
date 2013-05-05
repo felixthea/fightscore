@@ -87,7 +87,7 @@
 				<div class="span1">
 					<% scores.each do |score| %>
 						<%# iterates through and adds up all the scores users submitted for this fighter's round %>
-						<% if score.score != 0 %>
+						<% if score.score > 7 %>
 							<% total_scores = total_scores + score.score %>
 							<%# score.score %>
 							<% eligible_scores = eligible_scores + 1 %>
