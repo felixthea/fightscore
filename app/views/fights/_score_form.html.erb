@@ -1,4 +1,4 @@
 <%= form_for @score do |f| %>
-	<%= f.number_field :score, options = { :max => 10, :class => "input-mini" } %>
+	<%= f.number_field :score, options = { :min => 6, :max => 10, :class => "input-mini" } %>
 	<%= f.submit "Score" %>
 <% end %>
