@@ -76,13 +76,14 @@
 		<% end %>
 	</div>
 	<% fighters.uniq.each do |fighter| %>
+	<% @avg_total_scores = 0.00 %>
 	<div class="row">
 		<div class="span1"><%= fighter.name %></div>
 			<% fighters_rounds = find_rounds_for_fights_fighter(@fight.id, fighter.id) %>
 			<% fighters_rounds.each do |round| %>
 				<% scores = find_all_users_scores_for_round(round.id) %>
 				<% total_scores = 0 %>
-				<% eligible_scores = 0 %>
+				<% @eligible_scores = 0 %>
 				<div class="span1">
 					<% avg_total_scores = 0 %>
 					<% scores.each do |score| %>
@@ -90,18 +91,19 @@
 						<% if score.score > 7 %>
 							<% total_scores = total_scores + score.score %>
 							<%# score.score %>
-							<% eligible_scores = eligible_scores + 1 %>
+							<% @eligible_scores = @eligible_scores + 1 %>
 						<% end %>
 					<% end %>
-					<% if eligible_scores > 0 %>
-						<%= average_score = total_scores / eligible_scores %>
-						<% avg_total_scores = avg_total_scores + average_score %>
+					<% if @eligible_scores > 0 %>
+						<% average_score = (total_scores / @eligible_scores) %>
+						<%= number_with_precision(average_score, :precision => 2) %>
+						<% @avg_total_scores = @avg_total_scores + average_score %>
 					<% else %>
-						--
+					--
 					<% end %>
 				</div>
 			<% end %>
-			<div class="span1"></div>
+			<div class="span1"><%= @avg_total_scores %></div>
 	</div>
 	<% end %>
 </div>
