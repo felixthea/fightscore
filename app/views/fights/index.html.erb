@@ -7,32 +7,63 @@
 	Join in on the fun and call the next big fight!
 </div>
 <div class="container">
+	<h2>Score Upcoming Fights</h2>
 	<% @fights.each do |fight| %>
-		<div class="span2" align="center">
-			<% i = 0 %>
-			<%= fight.date %>
-			<br/>
-			<% fight.fighters.uniq.each do |fighter| %>
-				<% i += 1%>
-				<strong><%= fighter.name %></strong>
-				<% if i < 2 %> 
-				<br/>vs.</br>
-				<% end %>
+			<% if fight.date >= Date.today %>
+				<div class="span2" align="center">
+					<% i = 0 %>
+					<%= fight.date %>
+					<br/>
+					<% fight.fighters.uniq.each do |fighter| %>
+						<% i += 1%>
+						<strong><%= fighter.name %></strong>
+						<% if i < 2 %> 
+						<br/>vs.</br>
+						<% end %>
+					<% end %>
+					<br/>
+					<%= fight.numrounds %> round fight.
+					<br/>
+					<%= link_to 'Score this Fight', score_fight_path(fight) %>
+					<%#= link_to 'Show scores', fight_path(fight) %>
+				    <%#= link_to 'Edit', edit_fight_path(fight) %>
+				    <%#= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<%#= link_to 'Create Rounds', create_rounds_fight_path(fight) %>
+					<%#= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
+				</div>
 			<% end %>
-			<br/>
-			<%= fight.numrounds %> round fight.
-			<br/>
-			<%= link_to 'Score this Fight', score_fight_path(fight) %>
-			<%#= link_to 'Show scores', fight_path(fight) %>
-		    <%#= link_to 'Edit', edit_fight_path(fight) %>
-		    <%#= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
-			<%#= link_to 'Create Rounds', create_rounds_fight_path(fight) %>
-			<%#= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
-		</div>
 	<% end %>
 </div>
 <div class="container">
-	<div class="span6">
+	<h2>Score Past Fights</h2>
+	<% @fights.each do |fight| %>
+			<% if fight.date < Date.today %>
+				<div class="span2" align="center">
+					<% i = 0 %>
+					<%= fight.date %>
+					<br/>
+					<% fight.fighters.uniq.each do |fighter| %>
+						<% i += 1%>
+						<strong><%= fighter.name %></strong>
+						<% if i < 2 %> 
+						<br/>vs.</br>
+						<% end %>
+					<% end %>
+					<br/>
+					<%= fight.numrounds %> round fight.
+					<br/>
+					<%= link_to 'Score this Fight', score_fight_path(fight) %>
+					<%#= link_to 'Show scores', fight_path(fight) %>
+				    <%#= link_to 'Edit', edit_fight_path(fight) %>
+				    <%#= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<%#= link_to 'Create Rounds', create_rounds_fight_path(fight) %>
+					<%#= link_to 'Create Fight Rounds', create_all_rounds_fight_path(fight) %>
+				</div>
+			<% end %>
+	<% end %>
+</div>
+<div class="container">
+	<div class="span12">
 		<iframe src="https://docs.google.com/forms/d/1XjsJv1RtB9tU9w9WEizHsMNZlLrvBMaj6To7Wn9lomY/viewform?embedded=true" width="760" height="200" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 	</div>
 </div>
