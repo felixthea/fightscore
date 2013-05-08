@@ -88,16 +88,14 @@
 				<div class="span1">
 					<% avg_total_scores = 0 %>
 					<% scores.each do |score| %>
-						<%# iterates through and adds up all the scores users submitted for this fighter's round %>
+						<%# iterates through and adds up all the scores users submitted for this fighter's round as long as it's 6 or above%>
 						<% if score.score >= 6 %>
 							<% total_scores = total_scores + score.score %>
-							<%# score.score %>
 							<% @eligible_scores = @eligible_scores + 1 %>
 						<% end %>
 					<% end %>
-					<% if @eligible_scores > 0 %>
-						<% average_score = (total_scores / @eligible_scores) %>
-						<%= number_with_precision(average_score, :precision => 2) %>
+					<% if @eligible_scores > 0.00 %>
+						<%= average_score = total_scores.to_f / @eligible_scores.to_f %>
 						<% @avg_total_scores = @avg_total_scores + average_score %>
 					<% else %>
 					--
