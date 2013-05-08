@@ -95,7 +95,8 @@
 						<% end %>
 					<% end %>
 					<% if @eligible_scores > 0.00 %>
-						<%= average_score = total_scores.to_f / @eligible_scores.to_f %>
+						<% average_score = total_scores.to_f / @eligible_scores.to_f %>
+						<%= number_with_precision(average_score, :precision => 2)%>
 						<% @avg_total_scores = @avg_total_scores + average_score %>
 					<% else %>
 					--
