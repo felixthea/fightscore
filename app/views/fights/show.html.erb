@@ -21,26 +21,7 @@
 </div>
 <div class="container">
 	<h4>Your Scorecard</h4>
-	<div class="row">
-		<div class="span1"><strong>Rounds</strong></div>
-		<div class="span1">1</div>
-		<div class="span1">2</div>
-		<div class="span1">3</div>
-		<div class="span1">4</div>
-		<div class="span1">5</div>
-		<% if @fight.numrounds > 5 %>
-			<div class="span1">6</div>
-			<div class="span1">7</div>
-			<div class="span1">8</div>
-			<div class="span1">9</div>
-			<div class="span1">10</div>
-		<% end %>
-		<% if @fight.numrounds > 10 %>
-			<div class="span1">11</div>
-			<div class="span1">12</div>
-		<% end %>
-		<div class="span1">Total</div>
-	</div>
+	<%= render 'round_table' %>
 	<% fighters.uniq.each do |fighter| %>
 	<div class="row">
 		<div class="span1"><%= fighter.name %></div>
@@ -60,26 +41,7 @@
 <%= link_to "Clear Your Scorecard", destroy_all_scores_fight_path(@fight), data: { confirm: 'Are you sure?' }%>
 <div class="container">
 	<h4>CallTheFight.com Average Scorecard</h4>
-	<div class="row">
-		<div class="span1"><strong>Rounds</strong></div>
-		<div class="span1">1</div>
-		<div class="span1">2</div>
-		<div class="span1">3</div>
-		<div class="span1">4</div>
-		<div class="span1">5</div>
-		<% if @fight.numrounds > 5 %>
-			<div class="span1">6</div>
-			<div class="span1">7</div>
-			<div class="span1">8</div>
-			<div class="span1">9</div>
-			<div class="span1">10</div>
-		<% end %>
-		<% if @fight.numrounds > 10 %>
-			<div class="span1">11</div>
-			<div class="span1">12</div>
-		<% end %>
-		<div class="span1">Total</div>
-	</div>
+	<%= render 'round_table' %>
 	<% fighters.uniq.each do |fighter| %>
 	<% @avg_total_scores = 0.00 %>
 	<div class="row">
